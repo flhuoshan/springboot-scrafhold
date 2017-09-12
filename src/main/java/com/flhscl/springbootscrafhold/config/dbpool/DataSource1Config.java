@@ -9,6 +9,7 @@ package com.flhscl.springbootscrafhold.config.dbpool;
  */
 
 import com.alibaba.druid.util.StringUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -29,11 +30,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.Arrays;
-
+@Slf4j
 @Configuration
 @MapperScan(basePackages = "com.flhscl.springbootscrafhold.mapper.datasource1", sqlSessionTemplateRef = "datasource1SqlSessionTemplate")
 public class DataSource1Config implements IDataSourrceEnvironmentAware {
-    private static final Logger logger = LoggerFactory.getLogger(DataSource2Config.class);
     private Environment environment;
     private RelaxedPropertyResolver relaxedPropertyResolver;
     @Override
@@ -46,7 +46,7 @@ public class DataSource1Config implements IDataSourrceEnvironmentAware {
     @Primary
     public DataSource testDataSource() throws SQLException {
         if (StringUtils.isEmpty(relaxedPropertyResolver.getProperty("url"))) {
-            logger.error("数据库连接池配置错误!"
+            log.error("数据库连接池配置错误!"
                     + " 请检查Spring配置文件，目前的配置有："
                     + Arrays.toString(environment.getActiveProfiles()));
             throw new ApplicationContextException(
