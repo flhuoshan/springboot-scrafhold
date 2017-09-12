@@ -38,7 +38,7 @@ public class UserServiceTest {
 
     @Test
     public void deleteUser() throws Exception {
-        userService.deleteUser(2);
+        userService.deleteUser(3);
     }
 
     @Test
