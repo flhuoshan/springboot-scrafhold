@@ -12,6 +12,7 @@
  - 集成了模板框架freemarker
  - 集成了ojdbc6，mysql-connector-java分别适配oracle和mysql
  - 集成了fastjson
+ - 集成了lombok
  - test，prd，pre分环境配置,运行时指定环境
  - 根据操作环境分windows和Linux生成日志存放路径
  
